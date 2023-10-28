@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import sqlite3
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+conn = sqlite3.connect('exzamen.db')
+cursor = conn.cursor()
+cursor.execute('''CREATE TABLE IF NOT EXISTS tab_1(id INTEGER PRIMARY KEY AUTOINCREMENT, col_1 INTEGER, col_2 TEXT, col_3 TEXT)''')
+conn.commit()
 
+cursor.execute('''INSERT INTO tab_1(col_1,col_2,col_3) VALUES (1, 'anna','deg')''')
+cursor.execute('''INSERT INTO tab_1(col_1,col_2,col_3) VALUES (2, 'sofia','kru')''')
+cursor.execute('''INSERT INTO tab_1(col_1,col_2,col_3) VALUES (3, 'egor','ral')''')
+conn.commit()
+s = cursor.fetchall()
+print(s)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('anna13.10.23')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
